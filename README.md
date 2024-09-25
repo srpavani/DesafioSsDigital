@@ -1,9 +1,7 @@
 
 # Sistema de login SS Digital
 
-Este projeto consiste em um sistema de autenticação com registro, login e ativação de conta via email. O sistema foi construído utilizando PHP no backend, com PostgreSQL como banco de dados, e React no frontend com TypeScript.
-
-
+Este projeto consiste em um sistema de autenticação com registro, login e ativação de conta via email. O sistema foi construído utilizando PHP no backend, com PostgreSQL como banco de dados rodando no linux, e React no frontend com TypeScript.
 
 
 #### Requerimentos
