@@ -1,8 +1,11 @@
 <?php
 require 'database/datab.php';
 
-
-header('Content-Type: application/json'); //configura o Header para trabalhar com json
+header("Access-Control-Allow-Origin: http://localhost:3000"); //colocar seu ip 
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Credentials: true");
+header('Content-Type: application/json'); 
 
 
 $data = json_decode(file_get_contents('php://input'), true);

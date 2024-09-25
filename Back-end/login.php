@@ -1,19 +1,18 @@
 <?php
 
+session_start();
 
 
-header("Access-Control-Allow-Origin: *");  //permite requisicao de qualquer origem
+header("Access-Control-Allow-Origin: http://localhost:3000"); //colocar seu ip 
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
-
-session_start();
+header("Access-Control-Allow-Credentials: true");
+header('Content-Type: application/json'); 
 
 require 'database/datab.php';
 
-header('Content-Type: application/json');
 
-$data = json_decode(file_get_contents('php://input'), true); 
-
+$data = json_decode(file_get_contents('php://input'), true);
 $email = $data['email'] ?? '';  
 $password = $data['password'] ?? '';
 
@@ -23,34 +22,36 @@ $response = [
     'user' => null
 ];
 
-if (isset($_SESSION['user_id'])) {
-    $response['logado'] = true;
-    $response['message'] = 'sessao ativa.';
-    $response['user'] = [
-        'id' => $_SESSION['user_id']
-    ];
-    echo json_encode($response);
-    exit();
-}
 
 if (!empty($email) && !empty($password)) {
+
     $stmt = $pdo->prepare("SELECT id, password FROM usuarios WHERE email = ?");
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
+    
     if ($user && password_verify($password, $user['password'])) {
+        
         $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_email'] = $email;  
+        $_SESSION['inicioSessao'] = time();  
+
+        
         $response['logado'] = true;
-        $response['message'] = 'logado com sucesso';
+        $response['message'] = 'Login efetuado com sucesso.';
         $response['user'] = [
-            'id' => $user['id']
+            'id' => $user['id'],
+            'email' => $email
         ];
     } else {
-        $response['message'] = 'email ou senha incorretos';
+        
+        $response['message'] = 'Email ou senha incorretos.';
     }
 } else {
-    $response['message'] = 'falta email/senha';
+    
+    $response['message'] = 'Falta email ou senha.';
 }
+
 
 echo json_encode($response);
 ?>
