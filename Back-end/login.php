@@ -1,5 +1,11 @@
 <?php
 
+
+
+header("Access-Control-Allow-Origin: *");  //permite requisicao de qualquer origem
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 session_start();
 
 require 'database/datab.php';
