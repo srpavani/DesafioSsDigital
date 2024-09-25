@@ -1,35 +1,47 @@
 <?php
 require 'database/datab.php';
+require './API/enviar_email_ativacao.php';
 
-header("Access-Control-Allow-Origin: http://localhost:3000"); //colocar seu ip 
+ob_start();
+
+header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Access-Control-Allow-Credentials: true");
-header('Content-Type: application/json'); 
-
+header('Content-Type: application/json');
 
 $data = json_decode(file_get_contents('php://input'), true);
 
 $email = $data['email'] ?? '';
 $password = $data['password'] ?? '';
 
-$response = []; // iniciar array para a resposta em json
+$response = [];
 
 if (!empty($email) && !empty($password)) {
+    
     $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = ?");
     $stmt->execute([$email]);
-    
+
     if ($stmt->fetch()) {
         $response['status'] = 'error';
         $response['message'] = 'Email já registrado';
     } else {
-       
-        $senhacripto = password_hash($password, PASSWORD_DEFAULT); //passwordHash nativo do php, faz a criptografia
-        $stmt = $pdo->prepare("INSERT INTO usuarios (email, password) VALUES (?, ?)");
         
-        if ($stmt->execute([$email, $senhacripto])) {
-            $response['status'] = 'success';
-            $response['message'] = 'Registrado';
+        $senhacripto = password_hash($password, PASSWORD_DEFAULT);
+
+
+        $tokenAtivacao = bin2hex(random_bytes(16));
+
+        $stmt = $pdo->prepare("INSERT INTO usuarios (email, password, token_ativacao, ativado) VALUES (?, ?, ?, FALSE)");
+
+        if ($stmt->execute([$email, $senhacripto, $tokenAtivacao])) {
+            if (enviarEmailAtivacao($email, $tokenAtivacao)) {
+                $response['status'] = 'success';
+                $response['message'] = 'Registrado com sucesso. Verifique seu email para ativar sua conta.';
+            } else {
+                $response['status'] = 'error';
+                $response['message'] = 'Erro ao enviar email de ativação.';
+            }
         } else {
             $response['status'] = 'error';
             $response['message'] = 'Erro ao registrar';
@@ -40,5 +52,6 @@ if (!empty($email) && !empty($password)) {
     $response['message'] = 'Falta email ou senha';
 }
 
-echo json_encode($response);    //retorna o json
+ob_end_clean();
+echo json_encode($response);
 ?>
