@@ -70,9 +70,25 @@ dentro da pasta database tem um arquivo chamado testarconn.php, com seu servidor
 
 ##Dentro da pasta API existe o arquivo enviar_email_ativacao.php, que já contém minhas credenciais para simplificar o funcionamento da API. No futuro, uma boa prática seria colocar essas credenciais em um arquivo .env 
 
+# Para testar o backend de forma automatica, na pasta Teste na raiz do diretorio, tem o arquivo test.py, ele esta programado para fazer o registro de 100 usuarios e gerar um grafico com sucesso e erro.
+### Instalação
+
+Para instalar a aplicação é necessário um ambiente de desenvolvimento, na pasta da aplicação e no seu terminal digite:
+
+se for windowns = `python -m venv venv`
+
+Depois é necessário ativar o ambiente virtual, digite:
+
+`.\venv\Scripts\activate`
+
+Depois do ambiente ativado instale os requirements.txt
+`.pip install -r requirements.txt`
+
+Para executar o arquivo de tests:
+`python test.py`
 
 
-## FRONT-END
+# FRONT-END
 
 #### Para o Modelo 2 funcionar corretamente, é necessário configurar a rota do backend no arquivo main.js. Siga os passos abaixo:
 #### Navegue até o caminho modelo2/assets/js/main.js.
