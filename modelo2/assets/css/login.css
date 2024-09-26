@@ -1,0 +1,34 @@
+/* Centralizar o card na tela */
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+h2 {
+    color: #343a40;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Estilizar a mensagem de erro */
+#loginMessage {
+    font-size: 14px;
+}
+
+

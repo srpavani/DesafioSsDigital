@@ -1,0 +1,31 @@
+
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: #343a40;
+}
+
+#logoutButton {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+#logoutButton:hover {
+    background-color: #c82333;
+}

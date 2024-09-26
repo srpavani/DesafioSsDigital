@@ -1,0 +1,49 @@
+/* Centralizar o card na tela */
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    width: 100%;
+    padding: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+#registerMessage {
+    font-size: 14px;
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
