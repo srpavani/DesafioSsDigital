@@ -68,7 +68,7 @@ dentro da pasta database tem um arquivo chamado testarconn.php, com seu servidor
 /Back-end/logout.php
 ```
 
-##Dentro da pasta API existe o arquivo enviar_email_ativacao.php, que já contém minhas credenciais para simplificar o funcionamento da API. No futuro, uma boa prática seria colocar essas credenciais em um arquivo .env 
+### Dentro da pasta API existe o arquivo enviar_email_ativacao.php, que já contém minhas credenciais para simplificar o funcionamento da API. No futuro, uma boa prática seria colocar essas credenciais em um arquivo .env 
 
 ### Para testar o backend de forma automática, na pasta Teste na raiz do diretório, há um arquivo chamado test.py, que está programado para realizar o registro de 100 usuários e gerar um gráfico com o número de sucessos e erros.
 ## Instalação
