@@ -12,7 +12,7 @@ Este projeto consiste em um sistema de autenticação com registro, login e ativ
   Servidor Web: XAMPP, Laragon ou qualquer outro ambiente similar que suporte PHP
   Node.js: para o frontend
   Optei por não usar o composer
-
+  Envio de e-mail: Necessário ter uma API Key da Mailjet (para facilitar, deixei minhas credenciais configuradas no projeto)
 ```
 
 ## Primeiro: clonar o repositório
