@@ -8,11 +8,13 @@ function enviarEmailAtivacao($emailUsuario, $tokenAtivacao) {
     $fromEmail = "pavanidiogo1@gmail.com";  
     $fromName = "SSDIGITAL";               
     $subject = "Ativação de Conta";       
-
+   
+    //quebra galho, melhorar na v1.1
     $htmlContent = "
         <h1>Ativação de Conta</h1>
         <p>Obrigado por se registrar! Para ativar sua conta, clique no link abaixo:</p>
-        <a href='http://localhost:3000/ativar/{$tokenAtivacao}'>Ativar Conta</a>
+         <p><a href='http://localhost:3000/ativar/{$tokenAtivacao}'>Ativar Conta no MODELO 1 (localhost:3000)</a></p>
+        <p><a href='http://localhost:8080/ProjetoSSdigital/DesafioSsDigital/modelo2/ativacao.html?token={$tokenAtivacao}'>Ativar Conta no servidor MODELO 2</a></p> 
     ";
 
 
