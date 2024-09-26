@@ -74,11 +74,21 @@ dentro da pasta database tem um arquivo chamado testarconn.php, com seu servidor
 
 ## FRONT-END
 
-#### Primeiro passo: instalar dependências, para isso acessar a pasta Front-End/sistemalogin/
-dentro dela digite o comando `npm install`
+#### Para o Modelo 2 funcionar corretamente, é necessário configurar a rota do backend no arquivo main.js. Siga os passos abaixo:
+#### Navegue até o caminho modelo2/assets/js/main.js.
+#### Na linha 2, substitua a variável API_URL pela URL do seu servidor backend.
+#### Exemplo:
+`const API_URL = 'http://localhost:8080/ProjetoSSdigital/DesafioSsDigital/Back-end';`
+
+##para o modelo 1 seguir os passos abaixo:
+
+#### Primeiro passo: instalar dependências.
+`cd/Front-End/sistemalogin/`
+dentro dela digite o comando:
+`npm install`
 
 #### depois de instalado todos os modulos, será nescessario criar uma .env 
-crie uma .env com a url do seu servidor, segue a minha como exemplo: `REACT_APP_API_URL=http://localhost:8080/ProjetoSSdigital/DesafioSsDigital/Back-end`
+crie uma .env e dentro dela coleque a url do seu servidor, segue a minha como exemplo: `REACT_APP_API_URL=http://localhost:8080/ProjetoSSdigital/DesafioSsDigital/Back-end`
 
 
 ### apos setado a .env agora é só rodar o servidor front end com o comando `npm start`
